@@ -13,9 +13,45 @@ public class Demo
 		//demo.reverseString();
 		//demo.trimStringSpaces();
 		//demo.sortArray();
-		demo.sortArrLogic();
+		//demo.sortArrLogic();
+		demo.getLargestPalindrome();
 	}
 
+	private  void getLargestPalindrome() {
+		String test = "bananas";
+		char [] arr = test.toCharArray();
+		StringBuilder sb = new StringBuilder();
+
+		int largestK = 0;
+		int largestJ = 0;
+
+		for (int i = 0; i < arr.length ; i++) {
+			//0...12
+			for (int j = i+1; j <arr.length; j ++ ) {
+				//1...12
+
+				for (int k = 1; j+ k < arr.length; k++)
+					if (arr[j - k] != arr[j + k]) {
+						break;
+					} else{
+						if ( k > largestK){
+							largestK  = k;
+							largestJ = j;
+						}
+
+					}
+
+			}
+		}
+
+		System.out.println("j = " + largestJ + ", k = " + largestK);
+		for (int i = largestJ -largestK; i <= largestJ +largestK; i++ ){
+			sb.append(arr[i]);
+		}
+
+		System.out.println("sb = " + sb);
+
+	}
 	private  void sortArrLogic(){
 		int [] arr = {34,53,21,54,65,77,6,2,4};
 		//int [] arr2 = new int[8];
